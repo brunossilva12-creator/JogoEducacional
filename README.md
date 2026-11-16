@@ -26,7 +26,7 @@ Um jogo educacional interativo sobre cartografia e geografia desenvolvido com o 
 ### 🚀 Como executar localmente
 1. Clone este repositório:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/brunossilva12-creator/JogoEducacional/tree/main
    ```
 2. Abra a pasta do projeto e execute o arquivo `index.html` diretamente no seu navegador.
 
@@ -54,7 +54,7 @@ An interactive educational game about cartography and geography developed with t
 ### 🚀 How to run locally
 1. Clone this repository:
    ```bash
-   git clone https://github.com
+   git clone https://github.com/brunossilva12-creator/JogoEducacional/tree/main
    ```
 2. Open the project folder and launch the `index.html` file in your browser.
 
