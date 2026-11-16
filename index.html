@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Grande Expedição dos Navegadores</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <div class="brand">⚓ A Grande Expedição</div>
+    <div id="user-area"></div>
+</header>
+
+<main class="container">
+
+    <section id="login-screen" class="screen active">
+        <div class="parchment login-card">
+            <div class="compass">🧭</div>
+            <p class="eyebrow">UMA JORNADA PELO CONHECIMENTO</p>
+            <h1>A Grande Expedição dos Navegadores</h1>
+            <p>Prepare sua bússola, consulte seus mapas e embarque em uma aventura pelo mundo da Geografia!</p>
+
+            <form id="login-form">
+                <label for="username">Nome do explorador</label>
+                <input id="username" type="text" maxlength="20" placeholder="Digite seu nome" required>
+                <button class="btn primary" type="submit">⚓ Entrar na expedição</button>
+            </form>
+
+            <p class="small-note">Sua jornada e suas conquistas serão salvas neste navegador.</p>
+        </div>
+    </section>
+
+    <section id="home-screen" class="screen">
+
+        <div class="hero parchment">
+            <p class="eyebrow">DIÁRIO DE BORDO</p>
+            <h1>Bem-vindo, <span id="welcome-name"></span>!</h1>
+            <p>O mundo está diante de você. Demonstre seus conhecimentos e conquiste os mares da Geografia.</p>
+
+            <div class="stats">
+                <div>
+                    <strong id="total-score">0</strong>
+                    <span>Pontos</span>
+                </div>
+                <div>
+                    <strong id="completed-count">0/3</strong>
+                    <span>Níveis</span>
+                </div>
+                <div>
+                    <strong id="mission-count">0/1</strong>
+                    <span>Missões</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">🗺️ Escolha sua rota</h2>
+
+        <div class="level-grid">
+
+            <article class="level-card" id="level-card-0">
+                <span class="level-icon">🧭</span>
+                <h3>Nível Básico</h3>
+                <p>Reconheça os conceitos fundamentais da cartografia.</p>
+                <span class="status" id="status-0">Disponível</span>
+                <button class="btn primary" id="level-btn-0">Iniciar jornada</button>
+            </article>
+
+            <article class="level-card locked" id="level-card-1">
+                <span class="level-icon">🗺️</span>
+                <h3>Nível Intermediário</h3>
+                <p>Aplique seus conhecimentos e descubra as distâncias reais.</p>
+                <span class="status" id="status-1">🔒 Bloqueado</span>
+                <button class="btn primary" id="level-btn-1" disabled>Iniciar jornada</button>
+            </article>
+
+            <article class="level-card locked" id="level-card-2">
+                <span class="level-icon">🏆</span>
+                <h3>Nível Avançado</h3>
+                <p>Analise mapas, escalas e situações geográficas.</p>
+                <span class="status" id="status-2">🔒 Bloqueado</span>
+                <button class="btn primary" id="level-btn-2" disabled>Iniciar jornada</button>
+            </article>
+
+        </div>
+
+        <div class="extra-grid">
+
+            <article class="feature-card">
+                <div class="feature-icon">📜</div>
+                <h3>Missão Especial</h3>
+                <p>Seis desafios misturados para testar sua capacidade de exploração.</p>
+                <button class="btn gold" id="mission-btn">Explorar missão</button>
+                <span id="mission-status" class="small-note"></span>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">🏅</div>
+                <h3>Minhas Conquistas</h3>
+                <p>Confira os selos e troféus conquistados em sua expedição.</p>
+                <button class="btn secondary" id="achievements-btn">Ver conquistas</button>
+            </article>
+
+            <article class="feature-card">
+                <div class="feature-icon">👑</div>
+                <h3>Ranking dos Exploradores</h3>
+                <p>Descubra quem são os dez maiores exploradores.</p>
+                <button class="btn secondary" id="ranking-btn">Ver ranking</button>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="game-screen" class="screen">
+
+        <div class="game-header parchment">
+            <button class="btn back-btn" id="exit-game">← Menu</button>
+
+            <div>
+                <p class="eyebrow" id="game-category">EXPEDIÇÃO</p>
+                <h2 id="game-title">Nível Básico</h2>
+            </div>
+
+            <div class="game-score">⭐ <span id="current-score">0</span></div>
+        </div>
+
+        <div class="progress-area">
+            <div class="progress-info">
+                <span id="question-counter">Questão 1 de 4</span>
+                <span id="progress-percent">25%</span>
+            </div>
+
+            <div class="progress-track">
+                <div id="progress-bar"></div>
+            </div>
+        </div>
+
+        <article class="question-card parchment">
+            <span class="question-label">DESAFIO DO NAVEGADOR</span>
+
+            <h2 id="question-text"></h2>
+
+            <div id="alternatives" class="alternatives"></div>
+
+            <div id="feedback" class="feedback" aria-live="polite"></div>
+
+            <button class="btn primary next-btn" id="next-btn" disabled>
+                Próxima questão →
+            </button>
+        </article>
+
+    </section>
+
+    <section id="result-screen" class="screen">
+
+        <div class="parchment result-card">
+            <div id="result-icon" class="result-icon">🏅</div>
+
+            <p class="eyebrow">DIÁRIO DE BORDO</p>
+
+            <h1 id="result-title">Expedição concluída!</h1>
+
+            <p id="result-message"></p>
+
+            <div class="result-stats">
+                <div>
+                    <strong id="result-correct">0</strong>
+                    <span>Acertos</span>
+                </div>
+
+                <div>
+                    <strong id="result-points">0</strong>
+                    <span>Pontos</span>
+                </div>
+
+                <div>
+                    <strong id="result-total">4</strong>
+                    <span>Questões</span>
+                </div>
+            </div>
+
+            <div id="result-reward" class="reward"></div>
+
+            <button class="btn primary" id="result-action">Continuar</button>
+
+            <button class="btn secondary" id="result-home">Voltar ao menu</button>
+        </div>
+
+    </section>
+
+    <section id="achievements-screen" class="screen">
+
+        <div class="parchment content-card">
+            <button class="btn back-btn" id="achievements-back">← Voltar</button>
+
+            <h1>🏅 Sala das Conquistas</h1>
+
+            <p>Os registros de suas grandes descobertas.</p>
+
+            <div id="achievements-list" class="achievement-list"></div>
+        </div>
+
+    </section>
+
+    <section id="ranking-screen" class="screen">
+
+        <div class="parchment content-card">
+            <button class="btn back-btn" id="ranking-back">← Voltar</button>
+
+            <h1>👑 Ranking dos Exploradores</h1>
+
+            <p>Os dez navegadores com maior pontuação.</p>
+
+            <div id="ranking-list"></div>
+
+            <p class="small-note">Ranking local: apresenta os jogadores cadastrados neste navegador.</p>
+        </div>
+
+    </section>
+
+    <section id="final-screen" class="screen">
+
+        <div class="parchment result-card">
+            <div class="result-icon">🏆</div>
+
+            <p class="eyebrow">MISSÃO CUMPRIDA</p>
+
+            <h1>Grande Explorador!</h1>
+
+            <p>Você concluiu todos os níveis da Grande Expedição dos Navegadores!</p>
+
+            <div class="result-stats">
+                <div>
+                    <strong id="final-score">0</strong>
+                    <span>Pontos</span>
+                </div>
+
+                <div>
+                    <strong id="final-levels">3/3</strong>
+                    <span>Níveis</span>
+                </div>
+
+                <div>
+                    <strong id="final-missions">0/1</strong>
+                    <span>Missões</span>
+                </div>
+            </div>
+
+            <div id="final-achievements" class="reward"></div>
+
+            <button class="btn primary" id="final-ranking">Ver meu ranking</button>
+
+            <button class="btn gold" id="final-restart">Jogar novamente</button>
+
+            <button class="btn secondary" id="final-home">Voltar ao menu</button>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>⚓ A Grande Expedição dos Navegadores | Aprender é descobrir novos mundos.</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
